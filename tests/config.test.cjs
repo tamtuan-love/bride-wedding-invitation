@@ -1,0 +1,28 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+
+const root = path.resolve(__dirname, '..');
+const wedding = vm.runInNewContext(`${fs.readFileSync(path.join(root, 'config.js'), 'utf8')}\nWEDDING;`);
+assert.equal(wedding.groom, 'Phạm Minh Tuấn');
+assert.equal(wedding.bride, 'Dương Thị Minh Tâm');
+assert.equal(`${wedding.groomFamilyName} ${wedding.groomShort}`, wedding.groom);
+assert.equal(`${wedding.brideFamilyName} ${wedding.brideShort}`, wedding.bride);
+assert.equal(new Date(wedding.date).toISOString(), '2026-12-20T03:30:00.000Z');
+assert.equal(new Date(wedding.calendarStart).toISOString(), '2026-12-20T03:00:00.000Z');
+assert.equal(new Date(wedding.date).getUTCDay(), 0);
+assert.equal(wedding.venue, 'Crown Palace');
+assert.equal(wedding.lunarDate, 'Ngày 12 tháng 11 năm Bính Ngọ');
+assert.equal(wedding.receptionTime, '10:00');
+assert.equal(wedding.timeLabel, '10:30');
+assert.equal(wedding.mapUrl, 'https://maps.app.goo.gl/MUk89jSk6gXEgYFA7');
+assert.equal(wedding.heroImage, 'images/optimized/TLG_7496.jpeg');
+assert.ok(fs.existsSync(path.join(root, wedding.heroImage)));
+assert.equal(wedding.musicFile, 'music/le-duong-music.m4a');
+assert.ok(fs.existsSync(path.join(root, wedding.musicFile)));
+assert.ok(fs.existsSync(path.join(root, 'images/optimized/solo/TLG_7298.jpeg')));
+assert.ok(fs.existsSync(path.join(root, 'images/optimized/solo/TLG_7617.jpeg')));
+assert.ok(fs.existsSync(path.join(root, 'images/optimized/TLG_7545.jpeg')));
+assert.ok(fs.existsSync(path.join(root, 'images/optimized/TLG_7944.jpeg')));
+console.log('PASS: tên đôi, ngày Chủ nhật, địa điểm, nhạc và ảnh cưới tối ưu.');
