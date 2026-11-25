@@ -36,7 +36,7 @@ function updateSoundButton() {
   const label = playing ? 'Tắt nhạc' : 'Bật nhạc';
   soundToggle.setAttribute('aria-label', label);
   soundToggle.title = label;
-  soundToggle.innerHTML = `<i data-lucide="${playing ? 'volume-2' : 'volume-x'}" aria-hidden="true"></i>`;
+  soundToggle.innerHTML = '<i data-lucide="music-2" aria-hidden="true"></i>';
   renderIcons();
 }
 async function playWeddingMusic() {
@@ -253,6 +253,14 @@ function setAutoScroll(enabled, target = null) {
   if (enabled) scrollFrame = window.requestAnimationFrame(gentlyScroll);
 }
 scrollToggle.addEventListener('click', () => setAutoScroll(!autoScroll));
+document.querySelector('#openGroomGift').addEventListener('click', () => {
+  if (autoScroll) setAutoScroll(false);
+  document.querySelector('#groomGiftDialog').showModal();
+});
+document.querySelector('#openBrideGift').addEventListener('click', () => {
+  if (autoScroll) setAutoScroll(false);
+  document.querySelector('#brideGiftDialog').showModal();
+});
 window.addEventListener('wheel', () => { if (autoScroll) setAutoScroll(false); }, { passive: true });
 window.addEventListener('touchstart', (event) => {
   if (autoScroll && !scrollToggle.contains(event.target)) setAutoScroll(false);

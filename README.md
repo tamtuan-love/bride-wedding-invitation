@@ -36,5 +36,5 @@ node tests/behavior.test.cjs
 - Ảnh, nhạc và thư viện biểu tượng đều được lưu cục bộ; website dùng Times New Roman hệ thống, không cần tải font ngoài.
 - Nút chỉ đường dùng liên kết Google Maps do gia đình cung cấp. QR trên ảnh chưa được giải mã để đối chiếu.
 - Nút lịch mở sự kiện điền sẵn trên Google Calendar để khách xác nhận lưu, trên cả máy tính và điện thoại. Lịch bắt đầu lúc đón khách 10:00 và kết thúc dự kiến lúc 13:30 giờ Việt Nam; giờ kết thúc là ước tính, không phải thông tin trong thiệp. Mô tả có ghi giờ khai tiệc 10:30.
-- Không sao chép ảnh, nhạc, ngân hàng hay RSVP của cặp đôi mẫu. Nhạc sử dụng tệp riêng được cung cấp cho website này; chưa có dữ liệu nên chưa hiển thị liên hệ, quà mừng hoặc RSVP.
+- Mục quà mừng sử dụng hai ảnh QR do gia đình cung cấp trong `images/QR/`; khách có thể mở từng mã riêng. Chưa hiển thị liên hệ hoặc RSVP.
 - Lucide v0.468.0 trong `vendor/` dùng ISC License; giấy phép đi kèm tại [vendor/LICENSE](vendor/LICENSE).

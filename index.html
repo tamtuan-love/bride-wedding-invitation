@@ -22,7 +22,7 @@
       <button class="open-button" id="startInvitation" type="button"><span aria-hidden="true">♡</span> Chạm để mở thiệp</button>
     </div>
     <audio id="weddingMusic" loop preload="none" src="music/le-duong-music.m4a"></audio>
-    <button class="sound-toggle" id="soundToggle" type="button" aria-label="Bật nhạc" title="Bật nhạc" aria-pressed="false"><i data-lucide="volume-x" aria-hidden="true"></i></button>
+    <button class="sound-toggle" id="soundToggle" type="button" aria-label="Bật nhạc" title="Bật nhạc" aria-pressed="false"><i data-lucide="music-2" aria-hidden="true"></i></button>
     <header class="header">
       <a class="brand" href="#home" aria-label="Minh Tuấn và Minh Tâm">T<span>&amp;</span>T</a>
       <span class="header__label">WEDDING INVITATION</span>
@@ -133,10 +133,31 @@
         </div>
       </section>
 
+      <section class="wedding-gift section" aria-labelledby="giftTitle">
+        <div class="section-heading reveal"><p class="eyebrow">WEDDING GIFT</p><h2 id="giftTitle">Gửi một lời chúc<br /><em>hoặc món quà nhỏ</em></h2></div>
+        <div class="wedding-gift__choices reveal">
+          <button class="gift-choice" id="openGroomGift" type="button" aria-haspopup="dialog"><img class="gift-choice__rings" src="images/wedding-ring-icon.png" alt="" /><span class="gift-choice__label">Mừng cưới chú rể</span><strong>Minh Tuấn</strong></button>
+          <button class="gift-choice" id="openBrideGift" type="button" aria-haspopup="dialog"><img class="gift-choice__rings" src="images/wedding-gift-icon.png" alt="" /><span class="gift-choice__label">Mừng cưới cô dâu</span><strong>Minh Tâm</strong></button>
+        </div>
+      </section>
+
       <footer class="footer section"><p class="footer__thank-you">Thank you</p><i data-lucide="heart" aria-hidden="true"></i><p>Sự hiện diện của Quý vị là niềm vinh hạnh<br />cho gia đình chúng tôi!</p><h2><span data-field="brideShort">Minh Tâm</span> <em>&amp;</em> <span data-field="groomShort">Minh Tuấn</span></h2><p class="footer__date" data-field="dateLabel">20.12.2026</p><a class="text-link" href="#home">Về đầu thiệp <i data-lucide="arrow-up" aria-hidden="true"></i></a></footer>
     </main>
+    <dialog class="gift-dialog" id="groomGiftDialog" aria-labelledby="groomGiftTitle">
+      <form method="dialog"><button class="gift-dialog__close" aria-label="Đóng" title="Đóng"><i data-lucide="x" aria-hidden="true"></i></button></form>
+      <p class="eyebrow">WEDDING GIFT</p>
+      <h2 id="groomGiftTitle">Mừng cưới chú rể</h2>
+      <img src="images/QR/groom-qr.jpg" alt="Mã QR mừng cưới chú rể Minh Tuấn" />
+    </dialog>
+    <dialog class="gift-dialog" id="brideGiftDialog" aria-labelledby="brideGiftTitle">
+      <form method="dialog"><button class="gift-dialog__close" aria-label="Đóng" title="Đóng"><i data-lucide="x" aria-hidden="true"></i></button></form>
+      <p class="eyebrow">WEDDING GIFT</p>
+      <h2 id="brideGiftTitle">Mừng cưới cô dâu</h2>
+      <img src="images/QR/bride-qr.jpg" alt="Mã QR mừng cưới cô dâu Minh Tâm" />
+    </dialog>
     <button class="scroll-toggle icon-button" id="scrollToggle" type="button" aria-label="Bật tự cuộn" title="Bật tự cuộn" aria-pressed="false"><i data-lucide="play" aria-hidden="true"></i></button>
     <div class="hearts" id="hearts" aria-hidden="true"></div>
+    <div class="ambient-hearts" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span></div>
     <p class="sr-only" id="actionStatus" role="status"></p>
   </body>
 </html>
