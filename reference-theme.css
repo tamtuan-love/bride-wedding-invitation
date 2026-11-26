@@ -338,6 +338,7 @@ h2 em { font-family: var(--serif); font-weight: 500; }
   .opening__names { flex-direction: column; gap: 0; line-height: 1.1; }
   .opening__names > span:not([data-field]) { font-size: .7em; line-height: 1; }
   .invitation .section-heading h2, .invitation .section-heading h2 em { font-size: 56px; }
+  .invitation .section-heading h2 em { display: block; }
   .header { height: 50px; padding: 0 18px; }
   .brand { font-size: 30px; }
   .header__label { font-size: 8px; }

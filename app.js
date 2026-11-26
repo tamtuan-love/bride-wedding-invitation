@@ -8,7 +8,6 @@ let autoScroll = false;
 let autoScrollTarget = null;
 let autoScrollHoldUntil = 0;
 let lastFrame = 0;
-let scrollRemainder = 0;
 let scrollFrame = 0;
 
 document.querySelectorAll('[data-field]').forEach((element) => {
@@ -221,16 +220,12 @@ function gentlyScroll(timestamp) {
         autoScrollTarget = null;
         autoScrollHoldUntil = timestamp + 1000;
       }
-    } else if (timestamp >= autoScrollHoldUntil) {
-      scrollRemainder += elapsed * 0.035;
-      const distance = Math.floor(scrollRemainder);
-      if (distance > 0) {
-        window.scrollBy({ top: distance, behavior: 'instant' });
-        scrollRemainder -= distance;
-      }
+    } else if (timestamp >= autoScrollHoldUntil && timestamp - lastFrame > 14) {
+      window.scrollBy({ top: 1, behavior: 'instant' });
+      lastFrame = timestamp;
     }
   }
-  lastFrame = timestamp;
+  if (!lastFrame || autoScrollTarget || timestamp < autoScrollHoldUntil) lastFrame = timestamp;
   if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
     setAutoScroll(false);
     return;
@@ -243,7 +238,6 @@ function setAutoScroll(enabled, target = null, initialHold = 0) {
   autoScrollHoldUntil = initialHold ? performance.now() + initialHold : 0;
   window.cancelAnimationFrame(scrollFrame);
   lastFrame = 0;
-  scrollRemainder = 0;
   scrollToggle.setAttribute('aria-pressed', String(enabled));
   const label = enabled ? 'Tạm dừng tự cuộn' : 'Bật tự cuộn';
   scrollToggle.setAttribute('aria-label', label);
