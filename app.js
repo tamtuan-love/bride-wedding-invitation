@@ -261,6 +261,32 @@ document.querySelector('#openBrideGift').addEventListener('click', () => {
   if (autoScroll) setAutoScroll(false);
   document.querySelector('#brideGiftDialog').showModal();
 });
+document.querySelectorAll('.gift-dialog__download').forEach((link) => {
+  link.addEventListener('click', async (event) => {
+    const device = window.navigator;
+    const mobile = /Android|iPhone|iPad|iPod/i.test(device.userAgent || '') || (/Macintosh/i.test(device.userAgent || '') && device.maxTouchPoints > 1);
+    if (!mobile || !device.share || !device.canShare || !window.isSecureContext) return;
+    event.preventDefault();
+    try {
+      const response = await fetch(link.href);
+      if (!response.ok) throw new Error('Cannot load QR image');
+      const file = new File([await response.blob()], link.download, { type: 'image/jpeg' });
+      const shareData = { files: [file] };
+      if (!device.canShare(shareData)) throw new Error('File sharing unavailable');
+      await device.share(shareData);
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+      const fallback = document.createElement('a');
+      fallback.href = link.href;
+      fallback.download = link.download;
+      fallback.target = '_blank';
+      fallback.rel = 'noopener';
+      document.body.append(fallback);
+      fallback.click();
+      fallback.remove();
+    }
+  });
+});
 window.addEventListener('wheel', () => { if (autoScroll) setAutoScroll(false); }, { passive: true });
 window.addEventListener('touchstart', (event) => {
   if (autoScroll && !scrollToggle.contains(event.target)) setAutoScroll(false);
@@ -286,15 +312,9 @@ function revealInvitation() {
   createHearts();
   if (weddingMusic.paused) playWeddingMusic();
 }
-function openAndStartAutoScroll() {
-  revealInvitation();
-  const countdown = document.querySelector('#countdown');
-  if (reducedMotion.matches) {
-    setAutoScroll(false);
-    countdown.scrollIntoView({ behavior: 'instant' });
-    return;
-  }
-  setAutoScroll(true, countdown);
+function openRsvp() {
+  setAutoScroll(false);
+  document.querySelector('#rsvpForm').scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'center' });
 }
 function startCoverAndAutoScroll() {
   revealInvitation();
@@ -307,12 +327,16 @@ function startCoverAndAutoScroll() {
   hero.scrollIntoView({ behavior: 'instant' });
   setAutoScroll(true);
 }
-document.querySelector('#openInvitation').addEventListener('click', openAndStartAutoScroll);
+document.querySelector('#openInvitation').addEventListener('click', openRsvp);
 document.querySelector('#startInvitation').addEventListener('click', startCoverAndAutoScroll);
 
+let heroFadeFrame = 0;
 window.addEventListener('scroll', () => {
-  if (!heroPhoto) return;
-  heroPhoto.style.opacity = String(1 - Math.min(1, window.scrollY / 180));
+  if (!heroPhoto || heroFadeFrame) return;
+  heroFadeFrame = window.requestAnimationFrame(() => {
+    heroPhoto.style.opacity = String(1 - Math.min(1, window.scrollY / 300));
+    heroFadeFrame = 0;
+  });
 }, { passive: true });
 
 function formatCalendarDate(date) {

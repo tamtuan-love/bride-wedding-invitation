@@ -12,6 +12,7 @@
     <script src="config.js" defer></script>
     <script src="vendor/lucide.min.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="rsvp.js" defer></script>
   </head>
   <body>
     <div class="opening" id="opening" role="dialog" aria-label="Mở thiệp báo hỉ">
@@ -21,7 +22,7 @@
       <p class="opening__date" data-field="dateLabel">20.12.2026</p>
       <button class="open-button" id="startInvitation" type="button"><span aria-hidden="true">♡</span> Chạm để mở thiệp</button>
     </div>
-    <audio id="weddingMusic" loop preload="none" src="music/le-duong-music.m4a"></audio>
+    <audio id="weddingMusic" loop preload="auto" src="music/le-duong-stream.m4a"></audio>
     <button class="sound-toggle" id="soundToggle" type="button" aria-label="Bật nhạc" title="Bật nhạc" aria-pressed="false"><i data-lucide="music-2" aria-hidden="true"></i></button>
     <header class="header">
       <a class="brand" href="#home" aria-label="Minh Tuấn và Minh Tâm">T<span>&amp;</span>T</a>
@@ -37,7 +38,7 @@
           <h1 id="heroTitle"><span data-field="brideShort">Minh Tâm</span><em>&amp;</em><span data-field="groomShort">Minh Tuấn</span></h1>
           <p class="hero__occasion">Mừng lễ thành hôn</p>
           <p class="hero__date" data-field="dateLabel">20.12.2026</p>
-          <button class="button button--red" id="openInvitation" type="button"><i data-lucide="mail-open" aria-hidden="true"></i> Mở thiệp mời</button>
+          <button class="button button--red" id="openInvitation" type="button"><i data-lucide="calendar-check" aria-hidden="true"></i>Xác nhận tham dự</button>
         </div>
         <a class="hero__scroll" href="#invitation" aria-label="Đến lời mời"><i data-lucide="arrow-down" aria-hidden="true"></i></a>
       </section>
@@ -94,7 +95,7 @@
           <h2 id="eventTitle">Tiệc cưới thân mật</h2>
           <p class="event-card__intro">Trân trọng kính mời Quý vị tới chung vui cùng gia đình</p>
           <div class="event-card__date"><strong>20</strong><div><span>CHỦ NHẬT</span><b>THÁNG 12<br />2026</b></div></div>
-          <p class="event-card__lunar" data-field="lunarDate">Ngày 12 tháng 11 năm Bính Ngọ</p>
+          <p class="event-card__lunar" data-field="lunarDate">Tức Ngày 12 tháng 11 năm Bính Ngọ (Âm Lịch)</p>
           <p class="event-card__time"><span>ĐÓN KHÁCH &amp; CHỤP ẢNH</span><strong data-field="receptionTime">10:00</strong></p>
           <p class="event-card__time"><span>KHAI TIỆC</span><strong data-field="timeLabel">10:30</strong></p>
           <div class="calendar" aria-label="Lịch tháng 12 năm 2026, ngày tiệc Chủ nhật 20">
@@ -126,15 +127,35 @@
           <figure class="gallery__item gallery__item--wide gallery__item--slide reveal"><img src="images/optimized/TLG_8029.jpeg" alt="Ảnh cưới của Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>09</span> Gần nhau thêm một chút</figcaption></figure>
           <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7545.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>10</span> Một ngày mình nhớ mãi</figcaption></figure>
           <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7944.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm dưới tán cây" loading="lazy" width="1197" height="1800" /><figcaption><span>11</span> Cùng nhau qua những mùa vui</figcaption></figure>
-          <figure class="gallery__item gallery__item--panorama gallery__item--slide reveal"><img src="images/optimized/TLG_8029.jpeg" alt="Khoảnh khắc cuối album ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>12</span> Khoảnh khắc của chúng mình</figcaption></figure>
+          <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7485.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>12</span> Khoảnh khắc của chúng mình</figcaption></figure>
+          <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7648.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>13</span> Những ngày bên nhau</figcaption></figure>
+          <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7724.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>14</span> Một chút yêu thương</figcaption></figure>
+          <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_7825.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>15</span> Cùng nhau lưu giữ</figcaption></figure>
+          <figure class="gallery__item gallery__item--slide reveal"><img src="images/optimized/TLG_8083.jpeg" alt="Ảnh cưới Minh Tuấn và Minh Tâm" loading="lazy" width="1197" height="1800" /><figcaption><span>16</span> Mãi là chúng mình</figcaption></figure>
           </div>
           <button class="gallery__arrow gallery__arrow--next" id="galleryNext" type="button" aria-label="Ảnh tiếp theo"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
           <div class="gallery__pagination" id="galleryPagination" role="group" aria-label="Chọn ảnh trong album"></div>
         </div>
       </section>
 
+      <section class="rsvp section" aria-labelledby="rsvpTitle">
+        <div class="section-heading reveal"><p class="eyebrow">XÁC NHẬN THAM DỰ</p><h2 id="rsvpTitle">Tham dự</h2></div>
+        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+          <div class="rsvp__details">
+            <label>Họ và tên<span class="rsvp__name-field"><input name="name" type="text" autocomplete="name" maxlength="100" placeholder=" " required /><span class="rsvp__name-hint" aria-hidden="true"><span class="rsvp__name-caret"></span>Tên của bạn và người thương</span></span></label>
+            <label>Số người<select name="guests" id="rsvpGuests" required><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></label>
+          </div>
+          <fieldset class="rsvp__choices"><legend>Bạn có thể tham dự không?</legend>
+            <label class="rsvp__choice"><input type="radio" name="attendance" value="yes" required /><span class="rsvp__choice-content"><i data-lucide="heart" aria-hidden="true"></i><span>Có, tôi sẽ<br /><strong>tham dự</strong></span></span></label>
+            <label class="rsvp__choice"><input type="radio" name="attendance" value="no" required /><span class="rsvp__choice-content"><i data-lucide="heart" aria-hidden="true"></i><span>Rất tiếc,<br /><strong>chưa sắp xếp được</strong></span></span></label>
+          </fieldset>
+          <button class="button button--red rsvp__submit" type="submit">Gửi xác nhận</button>
+          <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
       <section class="wedding-gift section" aria-labelledby="giftTitle">
-        <div class="section-heading reveal"><p class="eyebrow">WEDDING GIFT</p><h2 id="giftTitle">Gửi một lời chúc<br /><em>hoặc món quà nhỏ</em></h2></div>
+        <div class="section-heading reveal"><p class="eyebrow">WEDDING GIFT</p><h2 id="giftTitle">Gửi một món quà nhỏ</h2></div>
         <div class="wedding-gift__choices reveal">
           <button class="gift-choice" id="openGroomGift" type="button" aria-haspopup="dialog"><img class="gift-choice__rings" src="images/wedding-ring-icon.png" alt="" /><span class="gift-choice__label">Mừng cưới chú rể</span><strong>Minh Tuấn</strong></button>
           <button class="gift-choice" id="openBrideGift" type="button" aria-haspopup="dialog"><img class="gift-choice__rings" src="images/wedding-gift-icon.png" alt="" /><span class="gift-choice__label">Mừng cưới cô dâu</span><strong>Minh Tâm</strong></button>
@@ -148,12 +169,16 @@
       <p class="eyebrow">WEDDING GIFT</p>
       <h2 id="groomGiftTitle">Mừng cưới chú rể</h2>
       <img src="images/QR/groom-qr.jpg" alt="Mã QR mừng cưới chú rể Minh Tuấn" />
+      <p class="gift-dialog__instruction">Quét mã QR để gửi quà</p>
+      <a class="button button--outline gift-dialog__download" href="images/QR/groom-qr.jpg" download="qr-mung-cuoi-chu-re.jpg" target="_blank" rel="noopener"><i data-lucide="download" aria-hidden="true"></i> Tải QR</a>
     </dialog>
     <dialog class="gift-dialog" id="brideGiftDialog" aria-labelledby="brideGiftTitle">
       <form method="dialog"><button class="gift-dialog__close" aria-label="Đóng" title="Đóng"><i data-lucide="x" aria-hidden="true"></i></button></form>
       <p class="eyebrow">WEDDING GIFT</p>
       <h2 id="brideGiftTitle">Mừng cưới cô dâu</h2>
       <img src="images/QR/bride-qr.jpg" alt="Mã QR mừng cưới cô dâu Minh Tâm" />
+      <p class="gift-dialog__instruction">Quét mã QR để gửi quà</p>
+      <a class="button button--outline gift-dialog__download" href="images/QR/bride-qr.jpg" download="qr-mung-cuoi-co-dau.jpg" target="_blank" rel="noopener"><i data-lucide="download" aria-hidden="true"></i> Tải QR</a>
     </dialog>
     <button class="scroll-toggle icon-button" id="scrollToggle" type="button" aria-label="Bật tự cuộn" title="Bật tự cuộn" aria-pressed="false"><i data-lucide="play" aria-hidden="true"></i></button>
     <div class="hearts" id="hearts" aria-hidden="true"></div>

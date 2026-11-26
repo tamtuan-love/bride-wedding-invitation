@@ -1,3 +1,5 @@
+const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyaEYdEJEEo_nzqHzw6AoMK76klQ6ly47UIRvFejPx8QGCAGtEC53pSgFO_qS5a77du1g/exec';
+
 const WEDDING = Object.freeze({
   groom: 'Phạm Minh Tuấn',
   bride: 'Dương Thị Minh Tâm',
@@ -15,11 +17,11 @@ const WEDDING = Object.freeze({
   timeLabel: '10:30',
   weekday: 'Chủ nhật',
   fullDate: 'Chủ nhật, ngày 20 tháng 12 năm 2026',
-  lunarDate: 'Ngày 12 tháng 11 năm Bính Ngọ',
+  lunarDate: 'Tức Ngày 12 tháng 11 năm Bính Ngọ (Âm Lịch)',
   receptionTime: '10:00',
   venue: 'Crown Palace',
   address: '779 Đường Tự Minh · P. Quan Triều · Tỉnh Thái Nguyên',
   mapUrl: 'https://maps.app.goo.gl/MUk89jSk6gXEgYFA7',
   heroImage: 'images/optimized/TLG_7496.jpeg',
-  musicFile: 'music/le-duong-music.m4a'
+  musicFile: 'music/le-duong-stream.m4a'
 });

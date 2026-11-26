@@ -1,3 +1,7 @@
+@font-face { font-family: "Great Vibes"; font-style: normal; font-weight: 400; font-display: swap; src: url("vendor/great-vibes-vietnamese.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+@font-face { font-family: "Great Vibes"; font-style: normal; font-weight: 400; font-display: swap; src: url("vendor/great-vibes-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Great Vibes"; font-style: normal; font-weight: 400; font-display: swap; src: url("vendor/great-vibes-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 :root {
   --red: #6b1320;
   --red-dark: #26090e;
@@ -49,7 +53,7 @@ h2 em { font-family: var(--serif); font-weight: 500; }
   padding: 0;
   background: var(--red-dark);
 }
-.hero__photo { position: absolute; inset: 0; overflow: hidden; transition: opacity .25s ease; }
+.hero__photo { position: absolute; inset: 0; overflow: hidden; }
 .hero__photo .hero__art { position: absolute; inset: 0; width: 100%; max-width: 100%; height: 100%; object-fit: cover; object-position: 54% 38%; }
 .photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hero__overlay {
@@ -87,7 +91,8 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .invitation.section { padding-top: 24px; padding-bottom: 24px; background-color: var(--paper); }
 .section-heading .eyebrow { margin-bottom: 15px; }
 .section-heading h2 { margin-bottom: 24px; }
-.invitation__copy { max-width: 380px; margin: 0 auto; font-size: 16px; }
+.invitation .section-heading h2, .invitation .section-heading h2 em { font: 400 64px/1.3 "Great Vibes", cursive; }
+.invitation__copy { max-width: 400px; margin: 0 auto; font-size: 18px; }
 .couple {
   grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
   margin: 40px 0 30px;
@@ -116,20 +121,20 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .family-portraits { padding-top: 12px; padding-bottom: 28px; background-color: var(--paper); }
 .family-invitation-heading { margin: 0 auto 30px; text-align: center; color: var(--red); }
 .family-invitation-heading h2 { margin: 0; color: var(--red); font: 700 29px/1.2 var(--serif); }
-.family-invitation-heading__guest { display: inline-block; margin: 18px 0 20px; padding: 0 8px 8px; border-bottom: 1px solid var(--red); font: italic 35px/1.2 var(--serif); }
+.family-invitation-heading__guest { display: inline-block; margin: 18px 0 20px; padding: 0 8px 8px; border-bottom: 1px solid var(--red); font: 400 40px/1.3 "Great Vibes", cursive; }
 .family-invitation-heading__message { margin: 0; font: 500 21px/1.3 var(--serif); text-transform: uppercase; }
 .family-portraits__stage { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; min-height: 680px; padding: 28px 32px 42px; overflow: hidden; background: var(--red-dark); }
 .family-portraits__stage::before { content: ""; position: absolute; z-index: -1; inset: -5px; background: linear-gradient(180deg, #26090e52 0%, #26090e08 45%, #26090e55 100%), url("images/optimized/family-background.jpeg") center 48% / cover no-repeat; filter: blur(2px); }
 .family-portraits__motto { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; width: fit-content; max-width: 100%; gap: 4px; color: #fff; text-shadow: 0 2px 8px #26090e88; }
-.family-portraits__motto span:first-child { font: italic 46px/1.1 var(--serif); }
+.family-portraits__motto span:first-child { font: 400 50px/1.2 "Great Vibes", cursive; }
 .family-portraits__motto span:last-child { align-self: flex-start; font-size: 16px; font-weight: 700; }
 .family-portraits__grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; align-items: end; padding: 20px 4px 15px; }
 .family-portrait { min-width: 0; margin: 0; padding: 7px 7px 12px; overflow: hidden; border-radius: 8px; background: #fff; color: var(--red); text-align: center; box-shadow: 0 8px 22px #26090e50; }
-.family-portrait--groom { justify-self: end; width: 90%; transform: rotate(-4deg); }
-.family-portrait--bride { justify-self: start; width: 90%; transform: translateY(14px) rotate(4deg); }
+.family-portrait--groom { justify-self: end; width: 92%; transform: rotate(-4deg); }
+.family-portrait--bride { justify-self: start; width: 92%; transform: translateY(14px) rotate(4deg); }
 .family-portrait > img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 36%; background: var(--rose); }
 .family-portrait figcaption { display: grid; gap: 3px; padding: 8px 3px 0; }
-.family-portrait__role { color: var(--red); font: italic 22px/1.1 var(--serif); }
+.family-portrait__role { color: var(--red); font: 400 27px/1.25 "Great Vibes", cursive; }
 .family-portrait figcaption strong { color: var(--red); font: 700 20px/1.2 var(--serif); }
 .family-portraits__families { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 30px; text-align: center; }
 .family-portraits__families > div { min-width: 0; padding: 0 14px; }
@@ -138,6 +143,8 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .family-portraits__families h3 { margin: 0 0 10px; color: var(--red); font: 700 26px/1.2 var(--serif); }
 .family-portraits__families p { color: var(--ink); font-size: 15px; line-height: 1.6; }
 .gallery { background-color: var(--paper); }
+.gallery .section-heading .eyebrow, .rsvp .section-heading .eyebrow, .wedding-gift .section-heading .eyebrow { font-size: 15px; }
+.gallery .section-heading h2, .gallery .section-heading h2 em { font: 400 58px/1.25 "Great Vibes", cursive; }
 .gallery.section { padding-bottom: 0; }
 .gallery__carousel { position: relative; margin-top: 34px; padding: 0 0 36px; }
 .gallery__grid { position: relative; display: block; width: 100%; height: clamp(440px, 62vw, 650px); margin: 0; overflow: hidden; perspective: 1300px; perspective-origin: 50% 45%; }
@@ -156,12 +163,39 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .gallery__dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 99px; background: #6b13204d; cursor: pointer; transition: width .3s ease, background .3s ease; }
 .gallery__dot[aria-current="true"] { width: 28px; background: var(--red); }
 .event { padding-top: 24px; padding-bottom: 48px; background-color: var(--paper); text-align: center; }
+.rsvp.section { padding-top: 18px; padding-bottom: 24px; background: var(--paper); text-align: center; }
+.rsvp .section-heading .eyebrow { margin-bottom: 8px; }
+.rsvp .section-heading h2 { margin-bottom: 16px; color: var(--red); font: 400 56px/1.25 "Great Vibes", cursive; }
+.rsvp__form { width: min(100%, 360px); margin: 0 auto; }
+.rsvp__details { display: grid; grid-template-columns: minmax(0, 1fr) 88px; gap: 12px; text-align: left; }
+.rsvp__details label { color: var(--red); font-size: 15px; line-height: 1.4; }
+.rsvp__details input, .rsvp__details select { display: block; width: 100%; height: 46px; margin-top: 6px; padding: 0 10px; border: 1px solid #d6b7b2; border-radius: 5px; background: #fffaf6; color: var(--ink); font: inherit; }
+.rsvp__name-field { position: relative; display: block; }
+.rsvp__name-hint { position: absolute; inset: 0 10px; display: flex; align-items: center; gap: 5px; color: #806b68; font-size: 14px; line-height: 1.2; pointer-events: none; }
+.rsvp__name-field input:not(:placeholder-shown) + .rsvp__name-hint, .rsvp__name-field input:focus + .rsvp__name-hint { display: none; }
+.rsvp__name-caret { flex: 0 0 1px; height: 18px; background: var(--red); animation: rsvp-caret 1.8s step-end infinite; }
+@keyframes rsvp-caret { 50% { opacity: 0; } }
+.rsvp__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 12px 0 14px; padding: 0; border: 0; }
+.rsvp__choices legend { width: 100%; margin-bottom: 6px; color: var(--red); font-size: 15px; }
+.rsvp__choice { position: relative; cursor: pointer; }
+.rsvp__choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.rsvp__choice-content { display: flex; height: 100%; min-height: 116px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 12px 8px; border: 1px solid #d6b7b2; border-radius: 6px; background: #fffaf6; color: #80605e; font: 18px/1.3 var(--serif); }
+.rsvp__choice-content svg { width: 24px; height: 24px; color: var(--red); stroke-width: 1.5; }
+.rsvp__choice:first-of-type svg { fill: currentColor; }
+.rsvp__choice-content strong { color: var(--red); }
+.rsvp__choice:hover .rsvp__choice-content { border-color: #b98585; background: #f7e7e5; color: #6b4444; }
+.rsvp__choice input:checked + .rsvp__choice-content { border-color: var(--red); background: #f9eae9; box-shadow: inset 0 0 0 1px var(--red); }
+.rsvp__choice input:focus-visible + .rsvp__choice-content { outline: 3px solid var(--green); outline-offset: 3px; }
+.rsvp__submit { min-width: 180px; }
+.rsvp__submit:disabled { background: #987b7f; cursor: default; }
+.rsvp__status { min-height: 1.5em; margin-top: 10px; color: var(--red); font-size: 14px; line-height: 1.5; }
+.rsvp__status:empty { display: none; }
 .wedding-gift.section { padding-top: 14px; padding-bottom: 60px; background: var(--paper); text-align: center; }
-.wedding-gift .section-heading h2 { margin-bottom: 28px; color: var(--red); font: 400 36px/1.2 var(--serif); }
-.wedding-gift .section-heading h2 em { color: #a45b65; font-size: .82em; }
+.wedding-gift .section-heading h2 { margin-bottom: 28px; color: var(--red); font: 400 46px/1.3 "Great Vibes", cursive; }
+.wedding-gift .section-heading h2 em { color: #a45b65; font: 400 .82em/1.3 "Great Vibes", cursive; }
 .wedding-gift__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: calc(100% - 24px); max-width: 420px; margin: 0 auto; }
 .gift-choice { display: flex; min-width: 0; min-height: 190px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 22px 10px; border: 1px solid #d6b7b2; border-radius: 6px; background: #fffaf6; color: var(--red); cursor: pointer; transition: background .2s, border-color .2s, box-shadow .2s; }
-.gift-choice:hover, .gift-choice:focus-visible { background: #fff5f2; border-color: #b98585; box-shadow: 0 6px 20px #6b132012; }
+.gift-choice:hover, .gift-choice:focus-visible { background: #f7e7e5; border-color: #a56a70; box-shadow: 0 6px 20px #6b132025; }
 .gift-choice__rings { display: block; width: 84px; height: 76px; margin-bottom: 8px; object-fit: contain; }
 .gift-choice__label { color: #80605e; font-size: 15px; line-height: 1.3; }
 .gift-choice strong { font: 700 23px/1.2 var(--serif); }
@@ -172,6 +206,8 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .gift-dialog .eyebrow { color: var(--red); font-size: 15px; }
 .gift-dialog h2 { margin: 9px 0 14px; color: var(--red); font: 700 27px/1.2 var(--serif); }
 .gift-dialog img { display: block; width: auto; max-width: 100%; max-height: min(55svh, 380px); margin: 0 auto; border: 1px solid #e6d3d0; border-radius: 4px; background: #fff; object-fit: contain; }
+.gift-dialog__instruction { margin: 12px 0 10px; color: var(--muted); font-size: 15px; line-height: 1.4; }
+.gift-dialog__download { text-decoration: none; }
 .event-card--invitation { width: min(560px, 100%); margin: 0 auto; padding: 30px clamp(20px, 6vw, 48px); border: 1px solid #fff4; border-radius: 10px; background: linear-gradient(155deg, #741923 0%, #4b0d16 100%); color: #f5ecdf; box-shadow: 0 18px 45px #14050840; }
 .event-card--invitation > .eyebrow { margin-bottom: 16px; color: #ead9c5; }
 .event-card--invitation h2 { margin: 0; color: #f5ecdf; font: 700 28px/1.2 "Times New Roman", Times, serif; }
@@ -188,7 +224,9 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .event-card--invitation .calendar__heading { justify-content: center; margin: 0 0 12px; padding-bottom: 12px; border-color: #bca995; color: #6b1320; font: italic 20px/1.2 "Times New Roman", Times, serif; }
 .event-card--invitation .calendar__week { padding-bottom: 8px; border-bottom: 2px solid #6b1320; color: #8c7164; }
 .event-card--invitation .calendar__days span { color: #4b0d16; }
-.event-card--invitation .calendar__days .selected { border-radius: 50%; background: #6b1320; color: #fffaf4; box-shadow: 0 3px 8px #26090e40; }
+.event-card--invitation .calendar__days .selected { position: relative; isolation: isolate; border-radius: 0; background: transparent; color: #fffaf4; box-shadow: none; }
+.event-card--invitation .calendar__days .selected::before { position: absolute; z-index: -1; inset: -10%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236b1320' d='M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3c1.74 0 3.41.81 4.5 2.09A5.98 5.98 0 0 1 16.5 3 5.5 5.5 0 0 1 22 8.5c0 3.78-3.4 6.86-8.55 11.51z'/%3E%3C/svg%3E") center / contain no-repeat; animation: calendar-heart-pulse 2.4s ease-in-out infinite; content: ""; }
+@keyframes calendar-heart-pulse { 50% { transform: scale(1.08); } }
 .event-card__venue { margin: 20px 0 14px; }
 .event-card__venue .eyebrow { margin-bottom: 6px; color: #d3bca7; }
 .event-card__venue h3 { margin: 0 0 5px; color: #f5ecdf; font: 700 23px/1.2 "Times New Roman", Times, serif; }
@@ -291,6 +329,7 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 @keyframes reference-spin { to { transform: rotate(360deg); } }
 @media (max-width: 600px) {
   .section { padding: 46px 25px; }
+  .invitation .section-heading h2, .invitation .section-heading h2 em { font-size: 56px; }
   .header { height: 50px; padding: 0 18px; }
   .brand { font-size: 30px; }
   .header__label { font-size: 8px; }
@@ -306,14 +345,14 @@ h2 em { font-family: var(--serif); font-weight: 500; }
   .family-portraits { padding-top: 10px; padding-bottom: 26px; }
   .family-invitation-heading { margin-bottom: 24px; }
   .family-invitation-heading h2 { font-size: 23px; }
-  .family-invitation-heading__guest { margin: 14px 0 16px; font-size: 29px; }
+  .family-invitation-heading__guest { margin: 14px 0 16px; font-size: 34px; }
   .family-invitation-heading__message { font-size: 17px; }
   .family-portraits__stage { min-height: 520px; padding: 20px 15px 32px; }
-  .family-portraits__motto span:first-child { font-size: 36px; }
+  .family-portraits__motto span:first-child { font-size: 40px; }
   .family-portraits__motto span:last-child { font-size: 14px; }
   .family-portraits__grid { gap: 18px; padding: 16px 2px 12px; }
   .family-portrait { padding: 5px 5px 10px; }
-  .family-portrait__role { font-size: 19px; }
+  .family-portrait__role { font-size: 24px; }
   .family-portrait figcaption strong { font-size: 17px; }
   .family-portraits__families { margin-top: 24px; }
   .family-portraits__families > div { padding: 0 8px; }
@@ -324,8 +363,12 @@ h2 em { font-family: var(--serif); font-weight: 500; }
   .families h3 { font-size: 22px; }
   .families p { font-size: 10px; }
   .gallery__carousel { margin-top: 27px; padding-bottom: 26px; }
+  .gallery .section-heading h2, .gallery .section-heading h2 em { font-size: 50px; }
+  .rsvp.section { padding-top: 18px; padding-bottom: 24px; }
+  .rsvp__details { grid-template-columns: minmax(0, 1fr) 80px; }
+  .rsvp__choice-content { font-size: 18px; }
   .wedding-gift.section { padding-top: 24px; }
-  .wedding-gift .section-heading h2 { font-size: 30px; }
+  .wedding-gift .section-heading h2 { font-size: 40px; }
   .gallery__grid { height: min(122vw, 500px); min-height: 390px; }
   .gallery__item { width: 67%; border-width: 5px; border-radius: 12px; }
   .gallery__arrow { top: 43%; width: 38px; height: 38px; }

@@ -76,7 +76,7 @@ assert.equal(cells[31].textContent, 31);
 
 const music = select('#weddingMusic');
 const soundToggle = select('#soundToggle');
-assert.equal(music.src, 'music/le-duong-music.m4a');
+assert.equal(music.src, 'music/le-duong-stream.m4a');
 assert.equal(music.loop, true);
 assert.equal(soundToggle.attributes['aria-pressed'], 'false');
 assert.ok(soundToggle.innerHTML.includes('data-lucide="music-2"'));
@@ -105,10 +105,12 @@ assert.ok(googleCalendar.searchParams.get('details').includes('https://maps.app.
 
 select('#openInvitation').listeners.click();
 assert.equal(select('#countdown').scrollOptions, undefined);
-assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'true');
-assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'true');
+assert.equal(select('#rsvpForm').scrollOptions.behavior, 'smooth');
+assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'false');
 assert.equal(music.paused, false);
 assert.equal(select('#hearts').children.length, 0);
+select('#scrollToggle').listeners.click();
+assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'true');
 select('#scrollToggle').listeners.click();
 assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'false');
 windowListeners.wheel();
@@ -172,8 +174,11 @@ assert.ok(html.includes('data-field="brideFather">Dương Trung Dũng'));
 assert.ok(!/03\.01\.2027|Nhà hàng Phố Mới|kiq6mT2zDrbaWFFt7/.test(html));
 assert.ok(html.includes('<p class="footer__thank-you">Thank you</p>'));
 const galleryImages = [...html.matchAll(/<figure class="gallery__item[^\"]*"><img src="([^\"]+)"/g)].map((match) => match[1]);
-assert.equal(galleryImages.length, 12);
-assert.equal(galleryImages.at(-1), 'images/optimized/TLG_8029.jpeg');
+assert.equal(galleryImages.length, 16);
+assert.equal(new Set(galleryImages).size, galleryImages.length);
+for (const image of ['TLG_7485.jpeg', 'TLG_7648.jpeg', 'TLG_7724.jpeg', 'TLG_7825.jpeg', 'TLG_8083.jpeg']) {
+  assert.ok(galleryImages.includes(`images/optimized/${image}`));
+}
 assert.ok(html.includes('id="galleryCarousel"'));
 assert.ok(html.includes('id="galleryPrevious"'));
 assert.ok(html.includes('id="galleryNext"'));
