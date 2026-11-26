@@ -92,6 +92,7 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .section-heading .eyebrow { margin-bottom: 15px; }
 .section-heading h2 { margin-bottom: 24px; }
 .invitation .section-heading h2, .invitation .section-heading h2 em { font: 400 64px/1.3 "Great Vibes", cursive; }
+.invitation .section-heading h2 { margin-bottom: 12px; }
 .invitation__copy { max-width: 400px; margin: 0 auto; font-size: 18px; }
 .couple {
   grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
@@ -269,9 +270,9 @@ h2 em { font-family: var(--serif); font-weight: 500; }
 .footer h2 em { color: #fff0d6; }
 .footer .footer__date { color: #ead9c5; font-size: 12px; letter-spacing: .2em; }
 .footer .text-link { border-color: #f5ecdf; color: #f5ecdf; }
-.scroll-toggle { z-index: 10; border: 1px solid #6b132033; background: #fffdf0e8; color: var(--red); box-shadow: 0 3px 14px #1f0b0c20; }
+.scroll-toggle { z-index: 10; right: max(10px, env(safe-area-inset-right)); border: 1px solid #6b132033; background: #fffdf0e8; color: var(--red); box-shadow: 0 3px 14px #1f0b0c20; }
 .scroll-toggle[aria-pressed="true"] { background: var(--red); color: #fffaf4; }
-.sound-toggle { position: fixed; z-index: 31; top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid #ffffff99; border-radius: 50%; background: #26090ecc; color: var(--paper); cursor: pointer; }
+.sound-toggle { position: fixed; z-index: 31; top: calc(57px + env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid #ffffff99; border-radius: 50%; background: #26090ecc; color: var(--paper); cursor: pointer; }
 .sound-toggle svg { width: 20px; height: 20px; }
 .sound-toggle.is-playing { animation: reference-spin 4s linear infinite; }
 .sound-toggle.is-playing::after { position: absolute; inset: 4px; border: 1px dashed #fff8; border-radius: 50%; content: ""; }
@@ -418,8 +419,8 @@ h2 em { font-family: var(--serif); font-weight: 500; }
   .families p { font-size: 14px; }
   .gallery__grid { height: 600px; }
   .detail p:not(.eyebrow):not(.detail__time) { font-size: 14px; }
-  .scroll-toggle { right: calc(50% - 360px); bottom: 22px; }
-  .sound-toggle { right: calc(50% - 360px); }
+  .scroll-toggle { right: max(10px, calc(50% - 368px)); bottom: 22px; }
+  .sound-toggle { right: max(10px, calc(50% - 368px)); }
 }
 .eyebrow { font-size: 13px; }
 .header__label, .header__link, .couple .eyebrow, .hero__scroll { font-size: 12px; }
