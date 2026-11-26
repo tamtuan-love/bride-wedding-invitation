@@ -16,11 +16,15 @@
   </head>
   <body>
     <div class="opening" id="opening" role="dialog" aria-label="Mở thiệp báo hỉ">
-      <div class="opening__shine" aria-hidden="true"></div>
+      <div class="opening__curtain opening__curtain--left" aria-hidden="true"></div>
+      <div class="opening__curtain opening__curtain--right" aria-hidden="true"></div>
       <p class="eyebrow opening__label">WEDDING INVITATION</p>
-      <div class="opening__monogram"><span data-field="brideShort">Minh Tâm</span> <span>&amp;</span> <span data-field="groomShort">Minh Tuấn</span></div>
-      <p class="opening__date" data-field="dateLabel">20.12.2026</p>
-      <button class="open-button" id="startInvitation" type="button"><span aria-hidden="true">♡</span> Chạm để mở thiệp</button>
+      <button class="open-button" id="startInvitation" type="button" aria-label="Chạm để mở thiệp">
+        <img class="opening__seal" src="images/shiny-heart-wax-seal.webp" alt="" aria-hidden="true" />
+        <span class="opening__names"><span data-field="brideShort">Minh Tâm</span> <span>&amp;</span> <span data-field="groomShort">Minh Tuấn</span></span>
+        <span class="opening__date" data-field="dateLabel">20.12.2026</span>
+        <span class="open-button__prompt"><i data-lucide="heart" aria-hidden="true"></i>Chạm để mở thiệp</span>
+      </button>
     </div>
     <audio id="weddingMusic" loop preload="auto" src="music/le-duong-stream.m4a"></audio>
     <button class="sound-toggle" id="soundToggle" type="button" aria-label="Bật nhạc" title="Bật nhạc" aria-pressed="false"><i data-lucide="music-2" aria-hidden="true"></i></button>

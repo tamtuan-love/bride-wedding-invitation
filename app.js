@@ -237,10 +237,10 @@ function gentlyScroll(timestamp) {
   }
   scrollFrame = window.requestAnimationFrame(gentlyScroll);
 }
-function setAutoScroll(enabled, target = null) {
+function setAutoScroll(enabled, target = null, initialHold = 0) {
   autoScroll = enabled;
   autoScrollTarget = enabled ? target : null;
-  autoScrollHoldUntil = 0;
+  autoScrollHoldUntil = initialHold ? performance.now() + initialHold : 0;
   window.cancelAnimationFrame(scrollFrame);
   lastFrame = 0;
   scrollRemainder = 0;
@@ -310,22 +310,21 @@ function revealInvitation() {
     opening.setAttribute('aria-hidden', 'true');
   }
   createHearts();
-  if (weddingMusic.paused) playWeddingMusic();
 }
 function openRsvp() {
   setAutoScroll(false);
   document.querySelector('#rsvpForm').scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'center' });
 }
 function startCoverAndAutoScroll() {
-  revealInvitation();
-  const hero = document.querySelector('#home');
-  if (reducedMotion.matches) {
-    setAutoScroll(false);
-    hero.scrollIntoView({ behavior: 'instant' });
-    return;
-  }
-  hero.scrollIntoView({ behavior: 'instant' });
-  setAutoScroll(true);
+  if (opening.classList.contains('is-opening') || opening.classList.contains('is-open')) return;
+  opening.classList.add('is-opening');
+  if (weddingMusic.paused) playWeddingMusic();
+  const finishOpening = () => {
+    revealInvitation();
+    setAutoScroll(!reducedMotion.matches, null, 1000);
+  };
+  if (reducedMotion.matches) finishOpening();
+  else window.setTimeout(finishOpening, 1900);
 }
 document.querySelector('#openInvitation').addEventListener('click', openRsvp);
 document.querySelector('#startInvitation').addEventListener('click', startCoverAndAutoScroll);

@@ -39,6 +39,7 @@ const select = (selector) => {
 };
 const windowListeners = {};
 const documentListeners = {};
+const timeouts = [];
 const document = {
   querySelector: select,
   querySelectorAll: () => [],
@@ -49,11 +50,11 @@ const document = {
   addEventListener: (name, callback) => { documentListeners[name] = callback; }
 };
 const context = vm.createContext({
-  document, Date, TextEncoder, Blob, URL, URLSearchParams,
+  document, Date, TextEncoder, Blob, URL, URLSearchParams, performance: { now: () => 100 },
   window: {
     navigator: { userAgent: 'Desktop browser', maxTouchPoints: 0 },
     matchMedia: () => ({ matches: false, addEventListener() {} }),
-    setInterval() {}, setTimeout() {}, cancelAnimationFrame() {}, requestAnimationFrame() { return 1; },
+    setInterval() {}, setTimeout(callback, delay) { timeouts.push({ callback, delay }); }, cancelAnimationFrame() {}, requestAnimationFrame() { return 1; },
     addEventListener: (name, callback) => { windowListeners[name] = callback; },
     scrollY: 0, innerHeight: 800, scrollBy() {}
   }
@@ -81,8 +82,11 @@ assert.equal(music.loop, true);
 assert.equal(soundToggle.attributes['aria-pressed'], 'false');
 assert.ok(soundToggle.innerHTML.includes('data-lucide="music-2"'));
 select('#startInvitation').listeners.click();
+assert.equal(select('#opening').classList.contains('is-opening'), true);
+assert.equal(music.paused, false);
+timeouts.find((timer) => timer.delay === 1900).callback();
 assert.equal(select('#opening').classList.contains('is-open'), true);
-assert.equal(select('#home').scrollOptions.behavior, 'instant');
+assert.equal(select('#home').scrollOptions, undefined);
 assert.equal(select('#countdown').scrollOptions, undefined);
 assert.equal(select('#scrollToggle').attributes['aria-pressed'], 'true');
 assert.equal(music.paused, false);
