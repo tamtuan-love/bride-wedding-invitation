@@ -56,7 +56,8 @@ const context = vm.createContext({
     matchMedia: () => ({ matches: false, addEventListener() {} }),
     setInterval() {}, setTimeout(callback, delay) { timeouts.push({ callback, delay }); }, cancelAnimationFrame() {}, requestAnimationFrame() { return 1; },
     addEventListener: (name, callback) => { windowListeners[name] = callback; },
-    scrollY: 0, innerHeight: 800, scrollBy() {}
+    scrollX: 0, scrollY: 0, innerHeight: 800, scrollBy() {},
+    scrollTo(options) { this.scrollOptions = options; this.scrollX = options.left; this.scrollY = options.top; }
   }
 });
 vm.runInContext(fs.readFileSync(path.join(root, 'config.js'), 'utf8'), context);
@@ -81,7 +82,12 @@ assert.equal(music.src, 'music/le-duong-stream.m4a');
 assert.equal(music.loop, true);
 assert.equal(soundToggle.attributes['aria-pressed'], 'false');
 assert.ok(soundToggle.innerHTML.includes('data-lucide="music-2"'));
+context.window.scrollY = 800;
+select('.hero__photo').style.opacity = '0';
 select('#startInvitation').listeners.click();
+assert.equal(context.window.scrollY, 0);
+assert.equal(context.window.scrollOptions.behavior, 'instant');
+assert.equal(select('.hero__photo').style.opacity, '1');
 assert.equal(select('#opening').classList.contains('is-opening'), true);
 assert.equal(music.paused, false);
 timeouts.find((timer) => timer.delay === 1900).callback();

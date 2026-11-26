@@ -317,6 +317,8 @@ function openRsvp() {
 }
 function startCoverAndAutoScroll() {
   if (opening.classList.contains('is-opening') || opening.classList.contains('is-open')) return;
+  if (window.scrollY !== 0 || window.scrollX !== 0) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  if (heroPhoto) heroPhoto.style.opacity = '1';
   opening.classList.add('is-opening');
   if (weddingMusic.paused) playWeddingMusic();
   const finishOpening = () => {
