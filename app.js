@@ -222,7 +222,7 @@ function gentlyScroll(timestamp) {
         autoScrollHoldUntil = timestamp + 1000;
       }
     } else if (timestamp >= autoScrollHoldUntil) {
-      scrollRemainder += elapsed * 0.025;
+      scrollRemainder += elapsed * 0.035;
       const distance = Math.floor(scrollRemainder);
       if (distance > 0) {
         window.scrollBy({ top: distance, behavior: 'instant' });
